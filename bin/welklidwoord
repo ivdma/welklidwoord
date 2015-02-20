@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+require 'rainbow'
+require 'welklidwoord'
+
+woord = ARGV[0]
+
+if %w(is heeft).include?(woord)
+  woord = ARGV[1]
+elsif %w(hoort).include?(woord) && %w(bij).include?(ARGV[1])
+  woord = ARGV[2]
+end
+
+article = Welklidwoord.is_het? woord
+
+woord = Rainbow(woord).yellow
+article = Rainbow(article).yellow
+
+puts "Lidwoord dat bij '#{woord}' hoort is '#{article}'"
