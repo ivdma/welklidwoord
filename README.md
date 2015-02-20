@@ -2,6 +2,8 @@
 
 This gem wraps the most famous http://welklidwoord.nl
 
+Kudos to https://twitter.com/kevindevette for running this service!
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -23,6 +25,9 @@ Or install it yourself as:
 Command-line:
 
 ```shell
+welklidwoord fiets
+Lidwoord dat bij 'vakantie' hoort is 'De'
+
 welklidwoord heeft fiets
 Lidwoord dat bij 'fiets' hoort is 'De'
 
