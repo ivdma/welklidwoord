@@ -22,15 +22,15 @@ Or install it yourself as:
 
 Command-line:
 
-```bash
+```shell
 welklidwoord heeft fiets
-# Lidwoord dat bij 'fiets' hoort is 'De'
+Lidwoord dat bij 'fiets' hoort is 'De'
 
-$ welklidwoord is pizza
-# Lidwoord dat bij 'pizza' hoort is 'De'
+welklidwoord is pizza
+Lidwoord dat bij 'pizza' hoort is 'De'
 
-$ welklidwoord hoort bij open-source
-# Lidwoord dat bij 'open-source' hoort is 'De of het'
+welklidwoord hoort bij open-source
+Lidwoord dat bij 'open-source' hoort is 'De of het'
 ```
 
 ## Development
