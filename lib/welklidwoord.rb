@@ -1,5 +1,8 @@
 require "welklidwoord/version"
 
 module Welklidwoord
-  # Your code goes here...
+  def self.is_it?(word)
+
+  end
+  alias_method :is_het?, :is_it?
 end
