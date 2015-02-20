@@ -25,7 +25,7 @@ Or install it yourself as:
 Command-line:
 
 ```shell
-welklidwoord fiets
+welklidwoord vakantie
 Lidwoord dat bij 'vakantie' hoort is 'De'
 
 welklidwoord heeft fiets
