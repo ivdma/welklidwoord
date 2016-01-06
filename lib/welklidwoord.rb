@@ -5,7 +5,7 @@ require 'welklidwoord/version'
 
 module Welklidwoord
   class Parse
-    URL   = 'http://welklidwoord.nl'
+    URL   = 'https://www.welklidwoord.nl'
     XPATH = '//*[@id="content"]/h1/span'
 
     attr_accessor :word
