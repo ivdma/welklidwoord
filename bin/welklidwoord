@@ -11,7 +11,8 @@ elsif %w(hoort).include?(woord) && %w(bij).include?(ARGV[1])
   woord = ARGV[2]
 end
 
-article = Welklidwoord.is_het? woord
+article = Welklidwoord.article(woord).to_s.capitalize
+article = "De of Het" if article.empty?
 
 woord = Rainbow(woord).yellow
 article = Rainbow(article).yellow
