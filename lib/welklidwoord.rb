@@ -1,5 +1,7 @@
-require 'open-uri'
-require 'nokogiri'
+require 'net/http'
+require 'json'
+require 'active_support/core_ext/hash/indifferent_access'
+require 'active_support/core_ext/object/to_param'
 
 require 'welklidwoord/version'
 
