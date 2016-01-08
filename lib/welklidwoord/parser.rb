@@ -40,17 +40,17 @@ module Welklidwoord
 
     def request
       response = Net::HTTP.get(URI(url))
-      begin
-        JSON.parse(response)
-      rescue JSON::ParserError
-        case response.strip
-        when /null/
-          fail Welklidwoord::ApiError, 'Dit woord bestaat niet, of komt niet voor in onze database.'
-        when /Geen geldige key/
-          fail Welklidwoord::ApiError, response.gsub('"', '').strip
-        else
-          fail Welklidwoord::ApiError, 'Iets ging mis'
-        end
+      JSON.parse(response)
+    rescue SocketError
+      fail Welklidwoord::ApiError, 'You appear to be offline. Check your internet connection.'
+    rescue JSON::ParserError
+      case response.strip
+      when /null/
+        fail Welklidwoord::ApiError, 'This word doesn\'t exist in our database.'
+      when /Geen geldige key/
+        fail Welklidwoord::ApiError, 'API key is wrong. Please run `welklidwoord init` or prefix the command with `ENV[\'WELKLIDWOORD_API_KEY\']=your_api_key`'
+      else
+        fail Welklidwoord::ApiError, 'Something went wrong...'
       end
     end
 

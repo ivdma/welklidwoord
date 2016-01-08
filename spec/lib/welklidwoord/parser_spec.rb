@@ -50,13 +50,21 @@ describe Welklidwoord::Parser do
     it 'fails if the word is not found' do
       expect do
         described_class.new('jibberjabber').article
-      end.to raise_error 'Dit woord bestaat niet, of komt niet voor in onze database.'
+      end.to raise_error Welklidwoord::ApiError, 'This word doesn\'t exist in our database.'
     end
 
     it 'fails if api key is invalid' do
       expect do
         described_class.new('fiets', 'blabla').article
-      end.to raise_error Welklidwoord::ApiError, 'Geen geldige key'
+      end.to raise_error Welklidwoord::ApiError, 'API key is wrong. Please run `welklidwoord init` or prefix the command with `ENV[\'WELKLIDWOORD_API_KEY\']=your_api_key`'
+    end
+
+    it 'returns something else when other error' do
+      allow(JSON).to receive(:parse).and_raise(JSON::ParserError)
+
+      expect do
+        described_class.new('fiets').article
+      end.to raise_error Welklidwoord::ApiError, 'Something went wrong...'
     end
   end
 end
