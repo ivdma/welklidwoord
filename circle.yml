@@ -1,0 +1,26 @@
+machine:
+  ruby:
+    version: 2.2.4
+dependencies:
+  pre:
+    - 'rvm-exec 1.9.3-p551 gem install bundler'
+    - 'rvm-exec 2.0.0-p648 gem install bundler'
+    - 'rvm-exec 2.1.8 gem install bundler'
+    - 'rvm-exec 2.2.4 gem install bundler'
+    - 'rvm-exec 2.3.0 gem install bundler'
+  override:
+    - 'rvm-exec 1.9.3-p551 bundle install'
+    - 'rvm-exec 2.0.0-p648 bundle install'
+    - 'rvm-exec 2.1.8 bundle install'
+    - 'rvm-exec 2.2.4 bundle install'
+    - 'rvm-exec 2.3.0 bundle install'
+  cache_directories:
+    - '~/.rvm/rubies'
+
+test:
+  override:
+    - 'rvm-exec 1.9.3-p551 bundle exec rspec spec'
+    - 'rvm-exec 2.0.0-p648 bundle exec rspec spec'
+    - 'rvm-exec 2.1.8 bundle exec rspec spec'
+    - 'rvm-exec 2.2.4 bundle exec rspec spec'
+    - 'rvm-exec 2.3.0 bundle exec rspec spec'
