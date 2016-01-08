@@ -1,0 +1,40 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.1.0.welklidwoord.nl/words/?key=958044f265e2f39ca383d3bb35c5996c&search=fiets
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.1.0.welklidwoord.nl
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 08 Jan 2016 09:19:24 GMT
+      Server:
+      - Apache/2
+      X-Powered-By:
+      - PHP/5.5.21
+      Vary:
+      - User-Agent
+      Content-Length:
+      - '39'
+      Content-Type:
+      - text/html; charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: "[{\"woord\":\"fiets\",\"lidwoord\":\"de\"}]\n \n\t"
+    http_version: 
+  recorded_at: Fri, 08 Jan 2016 09:19:25 GMT
+recorded_with: VCR 3.0.1

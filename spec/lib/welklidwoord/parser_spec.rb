@@ -48,23 +48,29 @@ describe Welklidwoord::Parser do
     end
 
     it 'fails if the word is not found' do
-      expect do
-        described_class.new('jibberjabber').article
-      end.to raise_error Welklidwoord::ApiError, 'This word doesn\'t exist in our database.'
+      VCR.use_cassette :word_not_found do
+        expect do
+          described_class.new('jibberjabber').article
+        end.to raise_error Welklidwoord::ApiError, 'This word doesn\'t exist in our database.'
+      end
     end
 
     it 'fails if api key is invalid' do
-      expect do
-        described_class.new('fiets', 'blabla').article
-      end.to raise_error Welklidwoord::ApiError, 'API key is wrong. Please run `welklidwoord init` or prefix the command with `ENV[\'WELKLIDWOORD_API_KEY\']=your_api_key`'
+      VCR.use_cassette :wrong_api_key do
+        expect do
+          described_class.new('fiets', 'blabla').article
+        end.to raise_error Welklidwoord::ApiError, 'API key is wrong. Please run `welklidwoord init` or prefix the command with `ENV[\'WELKLIDWOORD_API_KEY\']=your_api_key`'
+      end
     end
 
     it 'returns something else when other error' do
       allow(JSON).to receive(:parse).and_raise(JSON::ParserError)
 
-      expect do
-        described_class.new('fiets').article
-      end.to raise_error Welklidwoord::ApiError, 'Something went wrong...'
+      VCR.use_cassette :unknown_error do
+        expect do
+          described_class.new('fiets').article
+        end.to raise_error Welklidwoord::ApiError, 'Something went wrong...'
+      end
     end
   end
 end
